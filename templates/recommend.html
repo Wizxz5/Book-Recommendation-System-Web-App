@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="mystyle.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    color: #553939;
+    padding-bottom: 180px;
+    font-family: 'Poppins', sans-serif;
+    }
+
+div{
+    font-family: 'Poppins', sans-serif;
+}
+
+h3, h4{
+    color: #f85777;
+}
+    
+.text-blue{
+    color: #28a8a6;
+    font-size: 40px
+    }
+
+.col-md-3{
+    margin-top: 50px ;
+    }
+
+a{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+ul{
+    cursor: pointer;
+}
+
+p{
+    font-size: 16px;
+    font-weight: medium;
+}
+
+</style>
+
+<body style="background-color: #F7ECDE;">
+
+    <nav class="navbar" style="background-color:#9ED2C6;padding: 10px;">
+        <a class="navbar-brand" style="font-size:22px; color: #e15f79; font-weight: bold;">My Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a>Recommend</a></li>
+            <li><a>Contact</a></li>
+        </ul> 
+    </nav> 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-blue">Recommend Books</h1>
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control" placeholder="search book name"><br>
+                    <input type="submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>
+
+            {% if data %}
+            {% for i in data %}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                       <img class="card-img-top" src="{{i[2]}}" alt="img">
+                        <h4>{{i[0]}}</h4>
+                        <p>{{i[1]}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+           
+
+
+
+
+
+        
+
+    </div>
+</div>
+
+    
+
+</body>
+</html>
