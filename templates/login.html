@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            padding-bottom: 180px;
+            color: #553939;
+            font-family: 'Poppins', sans-serif;
+            background-color: #F7ECDE;
+        }
+
+        .login-container {
+            margin-top: 50px;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .navbar {
+            background-color: #9ED2C6;
+            padding: 10px;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            color: #e15f79;
+            font-weight: bold;
+        }
+
+        .navbar-nav li a {
+            font-weight: 500;
+            font-size: 16px;
+            color: #553939;
+        }
+
+        .icon {
+            position: absolute;
+            top: 0px;
+            right: 60px;
+            font-size: 24px;
+            color: #e15f79;
+            cursor: pointer;
+            background-color: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">My Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+     
+            <li><a href="/favorite">Favorite Book</a></li>
+            <li id="login-link" style="padding-left: 800px;"><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="container login-container">
+        <form id="loginForm" class="login-form">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-XA6ir0n4YZzm/Tf4v3A1p+WeRXLFndjAW4vth7sKuuXmbHpN5SwE+Z9X5R5FAFJd" crossorigin="anonymous"></script>
+
+    <script>
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            // Save login data in local storage (for demonstration purposes)
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password); // Note: storing passwords in local storage is not secure
+    
+            // Log login data to the console
+            console.log('Logged in as:');
+            console.log('Username: ' + username);
+            console.log('Password: ' + password); // Note: storing and logging passwords is not secure
+    
+            // Optional: Redirect or update the UI after login
+            alert('Logged in as ' + username);
+            window.location.href = "/"; // Redirect to the home page
+        });
+
+        // Check if user is logged in
+        const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
+        const loginLink = document.getElementById('login-link');
+
+        if (isLoggedIn) {
+            // Update the login link to say "Logout"
+            loginLink.innerHTML = '<a href="/logout">Logout</a>';
+        }
+    </script>
+</body>
+</html>

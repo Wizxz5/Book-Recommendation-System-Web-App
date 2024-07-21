@@ -1,5 +1,5 @@
 from optparse import Values
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request 
 import pickle
 import numpy as np
 import pandas as pd
@@ -22,10 +22,18 @@ def index():
     votes=list(popular_df['num_ratings'].values),
     rating=list(popular_df['avg_rating'].values)
     )
+@app.route('/login')
+def login_ui():
+    return render_template('login.html')
 
 @app.route('/recommend')
 def recommend_ui():
     return render_template('recommend.html')
+
+
+@app.route('/favorite')
+def favorite_ui():
+    return render_template('favorite.html')
 
 @app.route('/recommend_books',methods=['post'])
 def recommend():
